@@ -4,7 +4,7 @@ type VideoPlayerProps = {
   src: string;
   poster: string;
   autoPlay: boolean;
-}
+};
 
 function VideoPlayer(props: VideoPlayerProps) {
   const { src, poster, autoPlay } = props;
@@ -17,21 +17,25 @@ function VideoPlayer(props: VideoPlayerProps) {
   useEffect(() => {
     if (videoRef.current === null) {
       return;
-    }
+    };
 
     videoRef.current.addEventListener('loadeddata', () => setIsLoading(false));
 
     if (isPlaying) {
       videoRef.current.play();
       return;
-    }
+    };
 
     videoRef.current.pause();
   }, [isLoading]);
 
+  const handleMouseEnter: () => void = () => {
+    return setIsPlaying(true);
+  };
+
   return (
     <>
-      <video width="280" controls poster={poster} onMouseEnter={() => setIsPlaying(true)}>
+      <video width="280" height="175" controls poster={poster} onMouseEnter={handleMouseEnter}>
         <source src={src} type="video/mp4" />
       </video>
     </>
