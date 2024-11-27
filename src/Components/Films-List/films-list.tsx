@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { MovieType } from "../../Types/film-type";
 import { AppRoute } from "../../const";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import VideoPlayer from "../Video-Player/video-player";
 
 type FilmsListProps = {
@@ -13,15 +13,32 @@ function FilmsList(props: FilmsListProps) {
   const { films } = props;
 
   const [activeFilm, setActiveFilm] = useState<null | MovieType>(null);
+  const [isHovered, setIsHovered] = useState(false);
 
+  const timerRef = useRef<number | undefined>(undefined);
+
+
+  const handleMouseEnter = () => {
+    timerRef.current = window.setTimeout(() => {
+      setIsHovered(true);
+    }, 1000);
+  };
+
+  const handleMouseLeave = () => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = undefined;
+    }
+    setIsHovered(false);
+  };
 
   return (
-    <div className="catalog__films-list">
+    <div className="catalog__films-list" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       {
         films.map((item) => (
-          activeFilm?.id === item.id
+          activeFilm?.id === item.id && isHovered
             ?
-            <VideoPlayer key={activeFilm.id} src={activeFilm.videoLink} poster={activeFilm?.posterImage} autoPlay={false} />
+            <VideoPlayer key={activeFilm.id} src={activeFilm.videoLink} poster={activeFilm?.posterImage} />
             :
             <article className="small-film-card catalog__films-card" key={item.id} onMouseEnter={() => setActiveFilm(item)}>
               <div className="small-film-card__image">

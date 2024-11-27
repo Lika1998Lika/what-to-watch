@@ -21,7 +21,7 @@ export const movie: MovieType[] = [
     genre: 'Action',
     released: 2008,
     isFavorite: false,
-    videoLink: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    videoLink: 'https://10.react.htmlacademy.pro/static/film/video/bike.mp4',
     previewVideoLink: 'https://10.react.htmlacademy.pro/static/film/video/dog.mp4'
   },
   {

@@ -1,45 +1,55 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useEffect } from 'react';
 
 type VideoPlayerProps = {
   src: string;
   poster: string;
-  autoPlay: boolean;
 };
 
-function VideoPlayer(props: VideoPlayerProps) {
-  const { src, poster, autoPlay } = props;
-
-  const [isLoading, setIsLoading] = useState(true);
-  const [isPlaying, setIsPlaying] = useState(autoPlay);
-
+const VideoPlayer = (props: VideoPlayerProps) => {
+  const { src, poster } = props;
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
     if (videoRef.current === null) {
       return;
-    };
+    }
 
-    videoRef.current.addEventListener('loadeddata', () => setIsLoading(false));
-
-    if (isPlaying) {
+    const handleMouseEnter = () => {
+      if (videoRef.current === null) {
+        return;
+      }
       videoRef.current.play();
-      return;
     };
 
-    videoRef.current.pause();
-  }, [isLoading]);
+    const handleMouseLeave = () => {
+      if (videoRef.current === null) {
+        return;
+      }
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    };
 
-  const handleMouseEnter: () => void = () => {
-    return setIsPlaying(true);
-  };
+    const videoElement = videoRef.current;
+    videoElement.addEventListener('mouseenter', handleMouseEnter);
+    videoElement.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      videoElement.removeEventListener('mouseenter', handleMouseEnter);
+      videoElement.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, []);
 
   return (
-    <>
-      <video width="280" height="175" controls poster={poster} onMouseEnter={handleMouseEnter}>
-        <source src={src} type="video/mp4" />
-      </video>
-    </>
-  )
-}
+    <video
+      ref={videoRef}
+      src={src}
+      poster={poster}
+      muted
+      width="280"
+      height="175"
+    />
+  );
+};
 
 export default VideoPlayer;
+

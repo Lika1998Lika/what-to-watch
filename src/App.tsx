@@ -26,7 +26,7 @@ function App(props: AppProps) {
       <Routes>
         <Route path={AppRoute.Main} element={<MainPage films={films} />} />
         <Route path={AppRoute.SignIn} element={<SignInPage />} />
-        <Route path={AppRoute.MyList} element={<PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}><MyListPage /></PrivateRoute>} />
+        <Route path={AppRoute.MyList} element={<PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}><MyListPage films={films} /></PrivateRoute>} />
         <Route path={AppRoute.AddReview} element={<PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}><AddReviewPage /></PrivateRoute>} />
         <Route path={AppRoute.Film} element={<FilmPage />} />
         <Route path={AppRoute.Player} element={<PlayerPage />} />

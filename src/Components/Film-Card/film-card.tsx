@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { MovieType } from "../../Types/film-type";
 import Header from "../Header/header";
 
@@ -5,9 +6,34 @@ type FilmCardProps = {
   film: MovieType;
 };
 
-function FilmCard(props: FilmCardProps): JSX.Element {
+function FilmCard(props: FilmCardProps) {
 
   const { film } = props;
+
+  const [isAddedFilm, setIsAddedFilm] = useState(false);
+
+  const handleClick = () => {
+    setIsAddedFilm(true)
+  };
+
+  function result(): JSX.Element | undefined {
+    if (isAddedFilm === true) {
+      return (
+        <svg viewBox="0 0 19 20" width="19" height="20">
+          <use href="#in-list"></use>
+        </svg>
+      )
+    }
+    if (isAddedFilm === false) {
+      return (
+        <svg viewBox="0 0 19 20" width="19" height="20">
+          <use href="#add"></use>
+        </svg>
+      )
+    }
+    return undefined;
+
+  }
 
   return (
     <section className="film-card">
@@ -39,12 +65,14 @@ function FilmCard(props: FilmCardProps): JSX.Element {
                 </svg>
                 <span>Play</span>
               </button>
-              <button className="btn btn--list film-card__button" type="button">
-                <svg viewBox="0 0 19 20" width="19" height="20">
-                  <use href="#add"></use>
-                </svg>
+
+              <button className="btn btn--list film-card__button" type="button" onClick={handleClick}>
+                {
+                  result()
+                }
                 <span>My list</span>
               </button>
+
             </div>
           </div>
         </div>
