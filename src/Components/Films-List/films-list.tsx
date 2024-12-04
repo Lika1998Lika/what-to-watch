@@ -21,7 +21,7 @@ function FilmsList(props: FilmsListProps) {
   const handleMouseEnter = () => {
     timerRef.current = window.setTimeout(() => {
       setIsHovered(true);
-    }, 1000);
+    }, 5000);
   };
 
   const handleMouseLeave = () => {
@@ -38,12 +38,14 @@ function FilmsList(props: FilmsListProps) {
         films.map((item) => (
           activeFilm?.id === item.id && isHovered
             ?
-            <VideoPlayer key={activeFilm.id} src={activeFilm.videoLink} poster={activeFilm?.posterImage} />
+            <VideoPlayer key={activeFilm.id} src={activeFilm.previewVideoLink} poster={activeFilm?.posterImage} />
             :
             <article className="small-film-card catalog__films-card" key={item.id} onMouseEnter={() => setActiveFilm(item)}>
-              <div className="small-film-card__image">
-                <img src={item.posterImage} alt={item.name} width="280" height="175" />
-              </div>
+              <Link className="small-film-card__link" to={`${AppRoute.Film}/${item.id}`}>
+                <div className="small-film-card__image">
+                  <img src={item.previewImage} alt={item.name} width="280" height="175" />
+                </div>
+              </Link>
               <h3 className="small-film-card__title">
                 <Link className="small-film-card__link" to={`${AppRoute.Film}/${item.id}`}>{item.name}</Link>
               </h3>

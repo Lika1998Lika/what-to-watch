@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { Link } from "react-router-dom";
+import { AppRoute } from "../../const";
 import { MovieType } from "../../Types/film-type";
 import Header from "../Header/header";
 
@@ -10,30 +11,11 @@ function FilmCard(props: FilmCardProps) {
 
   const { film } = props;
 
-  const [isAddedFilm, setIsAddedFilm] = useState(false);
+  // const [isAddedFilm, setIsAddedFilm] = useState(false);
 
-  const handleClick = () => {
-    setIsAddedFilm(true)
-  };
-
-  function result(): JSX.Element | undefined {
-    if (isAddedFilm === true) {
-      return (
-        <svg viewBox="0 0 19 20" width="19" height="20">
-          <use href="#in-list"></use>
-        </svg>
-      )
-    }
-    if (isAddedFilm === false) {
-      return (
-        <svg viewBox="0 0 19 20" width="19" height="20">
-          <use href="#add"></use>
-        </svg>
-      )
-    }
-    return undefined;
-
-  }
+  // const handleClick = () => {
+  //   setIsAddedFilm(true)
+  // };
 
   return (
     <section className="film-card">
@@ -66,10 +48,12 @@ function FilmCard(props: FilmCardProps) {
                 <span>Play</span>
               </button>
 
-              <button className="btn btn--list film-card__button" type="button" onClick={handleClick}>
-                {
-                  result()
-                }
+              <button className="btn btn--list film-card__button" type="button" >
+                <Link to={AppRoute.MyList}>
+                  <svg viewBox="0 0 19 20" width="19" height="20">
+                    <use href="#add"></use>
+                  </svg>
+                </Link>
                 <span>My list</span>
               </button>
 

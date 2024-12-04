@@ -15,5 +15,5 @@ export type MovieType = {
   released: number;
   isFavorite: boolean;
   videoLink: string;
-  previewVideoLink: string
+  previewVideoLink: string;
 };

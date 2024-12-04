@@ -24,6 +24,7 @@ function MyListPage(props: MyListPageProps) {
               <span className="logo__letter logo__letter--3">W</span>
             </Link>
           </div>
+
           <h1 className="page-title user-page__title">My list</h1>
 
           <ul className="user-block">
@@ -45,9 +46,11 @@ function MyListPage(props: MyListPageProps) {
             {
               films.map((film) => (
                 <article className="small-film-card catalog__films-card" key={film.id}>
-                  <div className="small-film-card__image">
-                    <img src={film.posterImage} alt={film.name} width="280" height="175" />
-                  </div>
+                  <Link to={AppRoute.Film}>
+                    <div className="small-film-card__image">
+                      <img src={film.posterImage} alt={film.name} width="280" height="175" />
+                    </div>
+                  </Link>
                   <h3 className="small-film-card__title">
                     <Link className="small-film-card__link" to={AppRoute.Film}>{film.name}</Link>
                   </h3>
