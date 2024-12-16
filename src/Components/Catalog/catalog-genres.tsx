@@ -1,32 +1,41 @@
-const genreFilm = [
-  'All genres',
-  'Comedies',
-  'Crime',
-  'Documentary',
-  'Dramas',
-  'Horror',
-  'Kids & Family',
-  'Romance',
-  'Sci-Fi',
-  'Thrillers'
-];
+import { Link } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../Hooks/hooks";
+import { changeGenreAction } from "../../store/action";
+import { genriesListFilms, ganriesMap } from "../../const";
 
 function CatalogGenres() {
 
-  return (
-    <>
-      <ul className="catalog__genres-list">
-        {
-          genreFilm.map((item) => (
-            <li className="catalog__genres-item" key={item}>
-              <a href="/" className="catalog__genres-link">{item}</a>
-            </li>
-          ))
-        }
-      </ul>
+  const activeClass = 'catalog__genres-item--active';
+  const dispatch = useAppDispatch();
+  const genre = useAppSelector((state) => state.genre);
 
-    </>
+  return (
+    <ul className="catalog__genres-list">
+      {
+        genriesListFilms.map((item) => {
+          return (
+            <li className={`catalog__genres-item ${genre === item ? activeClass : ''}`} key={item}>
+              <Link to='#' className="catalog__genres-link" onClick={() => dispatch(changeGenreAction(ganriesMap[item]))}>{item}</Link>
+            </li>
+          )
+        })
+      }
+
+    </ul>
   )
 }
 
 export default CatalogGenres;
+
+{/* <ul className="catalog__genres-list">
+{
+  genriesListFilms.map((item) => {
+    return (
+      <li className="catalog__genres-item catalog__genres-item--active">
+        <a href="#" className="catalog__genres-link" onClick={() => dispatch(changeGenreAction(item))}>{item}</a>
+      </li>
+    )
+  })
+}
+
+</ul> */}

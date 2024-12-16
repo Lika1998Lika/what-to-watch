@@ -12,17 +12,19 @@ type MainPageProps = {
 function MainPage(props: MainPageProps) {
 
   const { films } = props;
+  const activeFilm = films[0];
 
+  if (!activeFilm) return null
   return (
     <>
       <Sketch />
-      <FilmCard film={films[6]} />
+      <FilmCard film={activeFilm} />
 
       <div className="page-content">
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
           <CatalogGenres />
-          <FilmsList films={films} />
+          <FilmsList />
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
           </div>

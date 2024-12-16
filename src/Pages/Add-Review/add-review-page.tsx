@@ -4,6 +4,7 @@ import { ChangeEvent, FormEvent, useState } from 'react';
 import { AppRoute } from '../../const';
 import Sketch from '../../Components/Sketch/sketch';
 import { MovieType } from '../../Types/film-type';
+import { useAppSelector } from '../../Hooks/hooks';
 
 type AddReviewPageProps = {
   movie: MovieType;
@@ -12,6 +13,9 @@ type AddReviewPageProps = {
 function AddReviewPage(props: AddReviewPageProps): JSX.Element {
   const { movie } = props;
   const { filmId } = useParams();
+  console.log('filmId', filmId)
+
+  const movies = useAppSelector((state) => state.movies);
 
   const [rating, setRating] = useState<number>(0);
   const [reviewText, setReviewText] = useState<string>('');

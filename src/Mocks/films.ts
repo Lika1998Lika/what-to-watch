@@ -1,6 +1,6 @@
 import { MovieType } from "../Types/film-type";
 
-export const movie: MovieType[] = [
+export const movies: MovieType[] = [
   {
     id: 1,
     name: 'Bronson',
@@ -18,7 +18,7 @@ export const movie: MovieType[] = [
       'Luing Andrews'
     ],
     runTime: 92,
-    genre: 'Action',
+    genre: 'Documentary',
     released: 2008,
     isFavorite: false,
     videoLink: 'https://10.react.htmlacademy.pro/static/film/video/bike.mp4',

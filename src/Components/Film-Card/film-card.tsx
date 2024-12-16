@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { AppRoute } from "../../const";
 import { MovieType } from "../../Types/film-type";
 import Header from "../Header/header";
+import { useAppSelector } from "../../Hooks/hooks";
 
 type FilmCardProps = {
   film: MovieType;
@@ -10,13 +11,8 @@ type FilmCardProps = {
 function FilmCard(props: FilmCardProps) {
 
   const { film } = props;
-
-  // const [isAddedFilm, setIsAddedFilm] = useState(false);
-
-  // const handleClick = () => {
-  //   setIsAddedFilm(true)
-  // };
-
+  const movies = useAppSelector((state) => state.movies)
+  console.log(movies)
   return (
     <section className="film-card">
       <div className="film-card__bg">

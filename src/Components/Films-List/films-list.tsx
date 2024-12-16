@@ -3,20 +3,19 @@ import { MovieType } from "../../Types/film-type";
 import { AppRoute } from "../../const";
 import { useRef, useState } from "react";
 import VideoPlayer from "../Video-Player/video-player";
+import { useAppSelector } from "../../Hooks/hooks";
 
 type FilmsListProps = {
-  films: MovieType[];
-};
-
-function FilmsList(props: FilmsListProps) {
-
-  const { films } = props;
+  limit?: number;
+}
+const FilmsList: React.FC<FilmsListProps> = ({ limit }) => {
 
   const [activeFilm, setActiveFilm] = useState<null | MovieType>(null);
   const [isHovered, setIsHovered] = useState(false);
 
-  const timerRef = useRef<number | undefined>(undefined);
+  const movies = useAppSelector((state) => state.movies);
 
+  const timerRef = useRef<number | undefined>(undefined);
 
   const handleMouseEnter = () => {
     timerRef.current = window.setTimeout(() => {
@@ -32,10 +31,12 @@ function FilmsList(props: FilmsListProps) {
     setIsHovered(false);
   };
 
+  const displayedMovies = limit ? movies.slice(0, limit) : movies;
+
   return (
     <div className="catalog__films-list" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       {
-        films.map((item) => (
+        displayedMovies.map((item) => (
           activeFilm?.id === item.id && isHovered
             ?
             <VideoPlayer key={activeFilm.id} src={activeFilm.previewVideoLink} poster={activeFilm?.posterImage} />
