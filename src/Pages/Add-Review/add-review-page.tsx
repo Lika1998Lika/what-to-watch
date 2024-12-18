@@ -1,21 +1,18 @@
 import { Link, useParams } from 'react-router-dom';
-
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { AppRoute } from '../../const';
 import Sketch from '../../Components/Sketch/sketch';
-import { MovieType } from '../../Types/film-type';
 import { useAppSelector } from '../../Hooks/hooks';
 
-type AddReviewPageProps = {
-  movie: MovieType;
-}
+function AddReviewPage(): JSX.Element {
 
-function AddReviewPage(props: AddReviewPageProps): JSX.Element {
-  const { movie } = props;
   const { filmId } = useParams();
-  console.log('filmId', filmId)
 
   const movies = useAppSelector((state) => state.movies);
+  const movie = movies.find((item) => item);
+  if (!movie) {
+    return <h1>ошибка</h1>
+  }
 
   const [rating, setRating] = useState<number>(0);
   const [reviewText, setReviewText] = useState<string>('');

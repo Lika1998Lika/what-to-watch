@@ -26,7 +26,7 @@ export const genriesListFilms = [
   'Thrillers'
 ];
 
- export const ganriesMap: Record<string, string> = {
+ export const genreMap: Record<string, string> = {
   'All genres': 'All genres',
   Comedies: "Comedy",
   Crime: "Crime",
@@ -39,3 +39,10 @@ export const genriesListFilms = [
   Thrillers: 'Thriller',
 };
 
+export const reviewsRating: Record<string, number[]> = {
+    Bad: [0, 1, 2, 3],
+    Normal: [3, 4, 5],
+    Good: [5, 6, 7],
+    'Very good': [8, 9, 10],
+    Awesome: [10],
+};

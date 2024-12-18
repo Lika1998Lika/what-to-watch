@@ -8,12 +8,14 @@ import { useAppSelector } from "../../Hooks/hooks";
 import FilmsList from "../../Components/Films-List/films-list";
 
 function FilmPage() {
-  const movies = useAppSelector((state) => state.movies);
-  const { filmId } = useParams()
 
-  const film = movies.find((item) => String(item.id) === filmId)
+  const { filmId } = useParams();
+  const movies = useAppSelector((state) => state.movies);
+  const film = movies.find((item) => String(item.id) === filmId);
+
 
   if (!film) return null
+
   return (
     <>
       <Sketch />
@@ -42,14 +44,12 @@ function FilmPage() {
                   </svg>
                   <span>Play</span>
                 </button>
-                <Link to={AppRoute.MyList} type="button">
-                  <button className="btn btn--list film-card__button" type="button">
-                    <svg viewBox="0 0 19 20" width="19" height="20">
-                      <use xlinkHref="#add"></use>
-                    </svg>
-                    <span>My list</span>
-                  </button>
-                </Link>
+                <button className="btn btn--list film-card__button" type="button">
+                  <svg viewBox="0 0 19 20" width="19" height="20">
+                    <use xlinkHref="#add"></use>
+                  </svg>
+                  <span>My list</span>
+                </button>
                 <Link className="btn film-card__button" to={`${AppRoute.AddReview}/${filmId}/review`}>Add review</Link>
               </div>
             </div>
@@ -74,7 +74,7 @@ function FilmPage() {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
           {
-            movies.length > 4 ? <FilmsList limit={4} /> : ''
+            movies.length >= 4 ? <FilmsList limit={4} /> : ''
           }
         </section>
 

@@ -1,9 +1,9 @@
 import { ReviewType } from "../Types/reviews-type";
 
-export const review: ReviewType[] = [
+export const reviews: ReviewType[] = [
   {
     id: 1,
-    rating: 8.6,
+    rating: 5.5,
     comment: 'Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the directors funniest and most exquisitely designed films in years',
     date: 'December 24, 2016',
     user : {
@@ -13,7 +13,7 @@ export const review: ReviewType[] = [
   },
   {
     id: 2,
-    rating: 8.6,
+    rating: 8,
     comment: 'Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the directors funniest and most exquisitely designed films in years',
     date: '2024-07-14T10:05:37.283Z',
     user : {
@@ -23,7 +23,7 @@ export const review: ReviewType[] = [
   },
   {
     id: 3,
-    rating: 8.6,
+    rating: 9.9,
     comment: 'Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the directors funniest and most exquisitely designed films in years',
     date: 'December 24, 2016',
     user : {
@@ -33,7 +33,7 @@ export const review: ReviewType[] = [
   },
   {
     id: 4,
-    rating: 8.6,
+    rating: 3.6,
     comment: 'Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the directors funniest and most exquisitely designed films in years',
     date: 'December 24, 2016',
     user : {

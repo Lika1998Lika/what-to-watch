@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../Hooks/hooks";
 import { changeGenreAction } from "../../store/action";
-import { genriesListFilms, ganriesMap } from "../../const";
+import { genriesListFilms, genreMap } from "../../const";
 
 function CatalogGenres() {
 
@@ -15,7 +15,7 @@ function CatalogGenres() {
         genriesListFilms.map((item) => {
           return (
             <li className={`catalog__genres-item ${genre === item ? activeClass : ''}`} key={item}>
-              <Link to='#' className="catalog__genres-link" onClick={() => dispatch(changeGenreAction(ganriesMap[item]))}>{item}</Link>
+              <Link to='#' className="catalog__genres-link" onClick={() => dispatch(changeGenreAction(genreMap[item]))}>{item}</Link>
             </li>
           )
         })

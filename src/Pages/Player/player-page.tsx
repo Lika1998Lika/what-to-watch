@@ -1,16 +1,15 @@
 import Sketch from "../../Components/Sketch/sketch";
-import { MovieType } from "../../Types/film-type";
+import { useAppSelector } from "../../Hooks/hooks";
 
-type PlayerPageType = {
-  film: MovieType
-}
-function PlayerPage(props: PlayerPageType) {
-  const { film } = props;
+function PlayerPage() {
+  const movies = useAppSelector((state) => state.movies);
+  const film = movies.find((movie) => movie)
+
   return (
     <>
       <Sketch />
       <div className="player">
-        <video src={film.videoLink} className="player__video" poster={film.previewImage}></video>
+        <video src={film?.videoLink} className="player__video" poster={film?.previewImage}></video>
 
         <button type="button" className="player__exit">Exit</button>
 

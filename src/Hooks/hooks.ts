@@ -5,6 +5,5 @@ import { AppDispatch, RootState } from "../Types/state";
 const useAppDispatch = () => useDispatch<AppDispatch>();
 //отправлять действия с помощью useDispatch
 const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
-console.log(useAppDispatch)
 
 export {useAppDispatch, useAppSelector};

@@ -1,18 +1,20 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { changeGenreAction, setMovies } from "./action";
+import { changeGenreAction, setMovies, setReviews } from "./action";
 import { MovieType } from "../Types/film-type";
 import {movies} from "../Mocks/films";
+import {reviews} from "../Mocks/reviews";
+import { ReviewType } from "../Types/reviews-type";
 
 type GenresType = {
   genre: string,
-  // allMovies: MovieType,
   movies: MovieType[],
+  reviews: ReviewType[],
 };
 
 const initialState: GenresType = {
   genre: 'All genres',
-  // allMovies: movies,
   movies,
+  reviews,
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -27,7 +29,10 @@ const reducer = createReducer(initialState, (builder) => {
   })
   .addCase(setMovies, (state, action) => {
     state.movies = action.payload;
-  });
+  })
+  .addCase(setReviews, (state, action) => {
+    state.reviews = action.payload;
+  })
 })
 
 export {reducer};
