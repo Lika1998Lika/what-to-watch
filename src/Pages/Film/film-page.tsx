@@ -13,8 +13,7 @@ function FilmPage() {
   const movies = useAppSelector((state) => state.movies);
   const film = movies.find((item) => String(item.id) === filmId);
 
-
-  if (!film) return null
+  if (!film) return null;
 
   return (
     <>
@@ -63,7 +62,6 @@ function FilmPage() {
             </div>
 
             <div className="film-card__desc">
-
               <Tabs />
             </div>
           </div>

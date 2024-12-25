@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../Hooks/hooks";
-import { changeGenreAction } from "../../store/action";
+import { changeGenreAction } from "../../Store/action";
 import { genriesListFilms, genreMap } from "../../const";
 
 function CatalogGenres() {
@@ -26,16 +26,3 @@ function CatalogGenres() {
 }
 
 export default CatalogGenres;
-
-{/* <ul className="catalog__genres-list">
-{
-  genriesListFilms.map((item) => {
-    return (
-      <li className="catalog__genres-item catalog__genres-item--active">
-        <a href="#" className="catalog__genres-link" onClick={() => dispatch(changeGenreAction(item))}>{item}</a>
-      </li>
-    )
-  })
-}
-
-</ul> */}

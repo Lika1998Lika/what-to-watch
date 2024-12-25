@@ -9,7 +9,7 @@ function AddReviewPage(): JSX.Element {
   const { filmId } = useParams();
 
   const movies = useAppSelector((state) => state.movies);
-  const movie = movies.find((item) => item);
+  const movie = movies.find((item) => item.id === Number(filmId));
   if (!movie) {
     return <h1>ошибка</h1>
   }

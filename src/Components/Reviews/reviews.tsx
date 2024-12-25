@@ -1,10 +1,13 @@
+import { useParams } from "react-router-dom";
 import { useAppSelector } from "../../Hooks/hooks";
 
 function Reviews() {
+  const { filmId } = useParams()
   const reviews = useAppSelector((state) => state.reviews);
+  const currentReviews = reviews.filter((item) => item.filmId === Number(filmId));
 
-  const midIndex = Math.ceil(reviews.length / 2);
-  const firstColumnReviews = reviews.slice(0, midIndex);
+  const midIndex = Math.ceil(currentReviews.length / 2);
+  const firstColumnReviews = currentReviews.slice(0, midIndex);
 
   const formatDate = (isoString: string): string => {
     const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
