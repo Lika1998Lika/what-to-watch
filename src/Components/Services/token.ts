@@ -1,8 +1,9 @@
+//название ключа под которым сохраняем токен 
 const AUTH_TOKEN_KEY_NAME = 'what-to-watch-token';
 
 export type Token = string;
 
-export const getToke = (): Token => {
+export const getToken = (): Token => {
   const token = localStorage.getItem(AUTH_TOKEN_KEY_NAME);
   return token ?? '';
 };

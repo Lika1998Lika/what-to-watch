@@ -11,7 +11,8 @@ function FilmPage() {
 
   const { filmId } = useParams();
   const movies = useAppSelector((state) => state.movies);
-  const film = movies.find((item) => String(item.id) === filmId);
+  //FIX
+  const film = movies.find((item: any) => String(item.id) === filmId);
 
   if (!film) return null;
 

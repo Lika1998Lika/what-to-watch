@@ -5,13 +5,21 @@ export enum AppRoute {
   Film = '/film',
   AddReview = '/add-review',
   Player = '/player',
-}
+};
 
 export enum AuthorizationStatus {
   Auth = 'AUTH',
   NoAuth = 'NO_AUTH',
   Unknown = 'UNKNOWN',
-}
+};
+
+export enum APIRoute {
+  Login = '/login',
+  Logout = '/logout',
+  Movies = '/films'
+};
+
+export const TIMEOUT_SHOW_ERROR = 2000;
 
 export const genriesListFilms = [
   'All genres',

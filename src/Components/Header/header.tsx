@@ -1,7 +1,15 @@
 import { Link } from "react-router-dom";
-import { AppRoute } from "../../const";
+import { AppRoute, AuthorizationStatus } from "../../const";
+import { useAppDispatch, useAppSelector } from "../../Hooks/hooks";
+import { logoutAction } from "../../Store/api-actions";
 
 function Header() {
+
+  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+  const dispatch = useAppDispatch();
+
+  const authStatus = authorizationStatus === AuthorizationStatus.Auth ? 'Sign out' : 'Sign in'
+
   return (
     <header className="page-header film-card__head">
       <div className="logo">
@@ -21,7 +29,13 @@ function Header() {
           </div>
         </li>
         <li className="user-block__item">
-          <a className="user-block__link">Sign out</a>
+          <Link to={AppRoute.SignIn} className="user-block__link"
+            onClick={(evt) => {
+              evt.preventDefault();
+              dispatch(logoutAction());
+            }}>
+            {authStatus}
+          </Link>
         </li>
       </ul>
     </header>
