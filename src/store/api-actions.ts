@@ -7,7 +7,6 @@ import { loadMovies, requireAuthorization, setDataLoadedStatus, redirectToRoute 
 import { AuthData } from "../Types/auth-data";
 import { dropToken, saveToken } from "../Components/Services/token";
 import { UserData } from "../Types/user-data";
-// import { store } from ".";
 
 export const fetchMoviesActions = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch,

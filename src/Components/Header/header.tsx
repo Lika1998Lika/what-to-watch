@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { AppRoute, AuthorizationStatus } from "../../const";
 import { useAppDispatch, useAppSelector } from "../../Hooks/hooks";
-import { logoutAction } from "../../Store/api-actions";
+import { loginAction } from "../../Store/api-actions";
 
 function Header() {
 
@@ -32,7 +32,7 @@ function Header() {
           <Link to={AppRoute.SignIn} className="user-block__link"
             onClick={(evt) => {
               evt.preventDefault();
-              dispatch(logoutAction());
+              dispatch(loginAction({ email: 'lika@mail.ru', password: '1234' }));
             }}>
             {authStatus}
           </Link>

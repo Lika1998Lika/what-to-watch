@@ -8,6 +8,7 @@ const StatusCodeMapping: Record<number, boolean> = {
   [StatusCodes.NOT_FOUND]: true,
 };
 
+//в качестве результата возвращает проверку кода
 const shouldDisplayError = (response: AxiosResponse) => !!StatusCodeMapping[response.status];
 
 const BACKEND_URL = 'https://10.react.htmlacademy.pro/wtw';
@@ -22,7 +23,7 @@ export const createAPI = (): AxiosInstance => {
   api.interceptors.request.use(
     (response) => response,
     (error: AxiosError) => {
-      if(error.response && shouldDisplayError(error.response)) {
+      if (error.response && shouldDisplayError(error.response)) {
         const responseData = error.response.data as { error: string };
         toast.warn(responseData.error)
       }
@@ -30,4 +31,4 @@ export const createAPI = (): AxiosInstance => {
       },
   );
   return api;
-}
+};

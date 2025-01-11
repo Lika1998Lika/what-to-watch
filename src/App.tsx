@@ -19,8 +19,10 @@ import browserHistory from "./browser-history"
 
 function App() {
 
-  const authorizationStatus = useAppSelector((state) => state.authorizationStatus)
+  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
   const isDataLoaded = useAppSelector((state) => state.isDataLoaded);
+
+  console.log(authorizationStatus, isDataLoaded)
 
   if (isCheckedAuth(authorizationStatus || isDataLoaded)) {
     return <LoadingScreen />;

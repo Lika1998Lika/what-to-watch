@@ -7,6 +7,8 @@ import { checkAuthAction, fetchMoviesActions } from './Store/api-actions.ts';
 import { ToastContainer } from 'react-toastify';
 
 store.dispatch(fetchMoviesActions());
+
+//проверка наличия авторизации
 store.dispatch(checkAuthAction());
 
 createRoot(document.getElementById('root')!).render(
