@@ -1,10 +1,10 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import App from './App.tsx';
 import { Provider } from 'react-redux';
-import { store } from './Store/index.ts';
-import { checkAuthAction, fetchMoviesActions } from './Store/api-actions.ts';
 import { ToastContainer } from 'react-toastify';
+import App from './App.tsx';
+import { store } from './store/index.ts';
+import { checkAuthAction, fetchMoviesActions } from './store/api-actions.ts';
 
 store.dispatch(fetchMoviesActions());
 

@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import Footer from "../../Components/Footer/footer";
-import Sketch from "../../Components/Sketch/sketch";
+import Sketch from "../../components/sketch/sketch";
 import { AppRoute } from "../../const";
-import FilmsList from "../../Components/Films-List/films-list";
+import FilmsList from "../../components/films-List/films-list";
+import Footer from "../../components/footer/footer";
+
 
 function MyListPage() {
   return (

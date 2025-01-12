@@ -1,6 +1,6 @@
-import browserHistory from "../../browser-history";
 import { Middleware } from "redux";
 import { reducer } from "../reducer";
+import browserHistory from "../../browser-history";
 
 interface ReduxAction {
   type: string;

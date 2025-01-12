@@ -1,21 +1,22 @@
-import MainPage from "./Pages/Main/main-page"
-import { AppRoute } from "./const"
-import SignInPage from "./Pages/Sign-In/sign-in-page"
-import MyListPage from "./Pages/My-List/my-list-page"
-import FilmPage from "./Pages/Film/film-page"
-import AddReviewPage from "./Pages/Add-Review/add-review-page"
-import PlayerPage from "./Pages/Player/player-page"
-import NotFoundScreen from "./Pages/NotFoundScreen/not-found-screen"
-import PrivateRoute from "./Components/PrivateRoutes/private-route"
-import { Navigate, Route, Routes } from "react-router-dom"
-import Details from "./Components/Details/details"
-import Reviews from "./Components/Reviews/reviews"
-import Overview from "./Components/Overwiev/overview"
-import { useAppSelector } from "./Hooks/hooks"
-import LoadingScreen from "./Pages/Loading-Screen/loading-screen"
-import { isCheckedAuth } from "./movies"
-import HistoryRouter from "./Components/History-Router/history-router"
-import browserHistory from "./browser-history"
+import { Navigate, Route, Routes } from "react-router-dom";
+import { AppRoute } from "./const";
+import PrivateRoute from "./components/privateRoutes/private-route";
+import MyListPage from "./pages/my-list/my-list-page";
+import MainPage from "./pages/main/main-page";
+import SignInPage from "./pages/sign-in/sign-in-page";
+import AddReviewPage from "./pages/add-review/add-review-page";
+import FilmPage from "./pages/film/film-page";
+import Overview from "./components/overwiev/overview";
+import Details from "./components/details/details";
+import Reviews from "./components/reviews/reviews";
+import PlayerPage from "./pages/player/player-page";
+import NotFoundScreen from "./pages/not-found-screen/not-found-screen";
+import HistoryRouter from "./components/history-router/history-router";
+import browserHistory from "./browser-history";
+import { useAppSelector } from "./hooks/hooks";
+import { isCheckedAuth } from "./movies";
+import LoadingScreen from "./pages/loading-screen/loading-screen";
+
 
 function App() {
 

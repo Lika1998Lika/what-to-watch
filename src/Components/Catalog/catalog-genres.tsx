@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../Hooks/hooks";
-import { changeGenreAction } from "../../Store/action";
-import { genriesListFilms, genreMap } from "../../const";
+import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+import { genreMap, genriesListFilms } from "../../const";
+import { changeGenreAction } from "../../store/action";
+
 
 function CatalogGenres() {
 

@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useAppSelector } from "../../Hooks/hooks";
+import { useAppSelector } from "../../hooks/hooks";
 
 function Reviews() {
   const { filmId } = useParams()

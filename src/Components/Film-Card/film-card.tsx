@@ -1,5 +1,5 @@
-import Header from "../Header/header";
-import { useAppSelector } from "../../Hooks/hooks";
+import { useAppSelector } from "../../hooks/hooks";
+import Header from "../header/header";
 
 
 function FilmCard() {

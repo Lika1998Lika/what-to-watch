@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { AppRoute, AuthorizationStatus } from "../../const";
-import { useAppDispatch, useAppSelector } from "../../Hooks/hooks";
-import { loginAction } from "../../Store/api-actions";
+import { loginAction } from "../../store/api-actions";
+
 
 function Header() {
 

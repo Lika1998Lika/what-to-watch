@@ -1,11 +1,11 @@
-import CatalogGenres from "../../Components/Catalog/catalog-genres";
-import FilmCard from "../../Components/Film-Card/film-card";
-import FilmsList from "../../Components/Films-List/films-list";
-import Footer from "../../Components/Footer/footer";
-import ShowMore from "../../Components/ShowMore/show-more";
-import Sketch from "../../Components/Sketch/sketch";
-import { useAppDispatch, useAppSelector } from "../../Hooks/hooks";
-import { setIncreaseMoviesCount } from "../../Store/action";
+import CatalogGenres from "../../components/catalog/catalog-genres";
+import FilmCard from "../../components/film-card/film-card";
+import FilmsList from "../../components/films-List/films-list";
+import Footer from "../../components/footer/footer";
+import ShowMore from "../../components/show-more/show-more";
+import Sketch from "../../components/sketch/sketch";
+import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+import { setIncreaseMoviesCount } from "../../store/action";
 
 function MainPage() {
   const movies = useAppSelector((state) => state.movies);

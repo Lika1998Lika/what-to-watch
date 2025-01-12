@@ -1,11 +1,10 @@
 import { createAction } from "@reduxjs/toolkit";
-import { MovieType } from "../Types/film-type";
-import { ReviewType } from "../Types/reviews-type";
+import { MovieType } from "../types/film-type";
 import { AppRoute, AuthorizationStatus } from "../const";
+import { ReviewType } from "../types/reviews-type";
 
 export const loadMovies = createAction<MovieType[]>('data/LOAD_MOVIES');
 export const requireAuthorization = createAction<AuthorizationStatus>('user/REQUIRE_AUTHORIZATION');
-// export const setError = createAction<string | null>('movies/SET_ERROR');
 export const setDataLoadedStatus = createAction<boolean>('data/SET_DATA_LOADED_STATUS');
 export const redirectToRoute = createAction<AppRoute>('movies/REDIRECT_TO_ROUTE');
 export const changeGenreAction = createAction<string>('genres/CHANGE_GENRE');

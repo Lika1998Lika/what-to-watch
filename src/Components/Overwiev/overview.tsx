@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
-import { useAppSelector } from "../../Hooks/hooks";
-import { getRatingDescription } from "./getRatingDescription";
+import { useAppSelector } from "../../hooks/hooks";
+import { getRatingDescription } from "./get-rating-description";
+
 
 function Overview() {
 

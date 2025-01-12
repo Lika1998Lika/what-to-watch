@@ -1,10 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
-import { MovieType } from "../../Types/film-type";
-import { AppRoute } from "../../const";
 import { useEffect, useRef, useState } from "react";
-import VideoPlayer from "../Video-Player/video-player";
-import { useAppDispatch, useAppSelector } from "../../Hooks/hooks";
-import { resetDisplayedMoviesCount } from "../../Store/action";
+import { MovieType } from "../../types/film-type";
+import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+import { resetDisplayedMoviesCount } from "../../store/action";
+import { AppRoute } from "../../const";
+import VideoPlayer from "../video-player/video-player";
 
 type FilmsListProps = {
   limit?: number;

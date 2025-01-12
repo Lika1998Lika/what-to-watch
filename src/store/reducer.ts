@@ -1,14 +1,15 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { MovieType } from "../Types/film-type";
-import { ReviewType } from "../Types/reviews-type";
-import { changeGenreAction, loadMovies, requireAuthorization, resetDisplayedMoviesCount, setDataLoadedStatus, setIncreaseMoviesCount, setMovies, setReviews } from "./action";
+import { MovieType } from "../types/film-type";
+import { ReviewType } from "../types/reviews-type";
 import { AuthorizationStatus } from "../const";
+import { changeGenreAction, loadMovies, requireAuthorization, resetDisplayedMoviesCount, setDataLoadedStatus, setIncreaseMoviesCount, setMovies, setReviews } from "./action";
+
 
 type InitialState = {
   genre: string,
   movies: MovieType[],
   reviews: ReviewType[],
-  authorizationStatus:AuthorizationStatus
+  authorizationStatus: AuthorizationStatus,
   displayedMoviesCount: number,
   isDataLoaded: boolean
 };
@@ -45,14 +46,14 @@ const reducer = createReducer(initialState, (builder) => {
     state.movies = action.payload;
     state.displayedMoviesCount = 8;
   })
+  .addCase(setReviews, (state, action) => {
+    state.reviews = action.payload;
+  })
   .addCase(setIncreaseMoviesCount, (state, action) => {
     state.displayedMoviesCount += action.payload
   })
   .addCase(resetDisplayedMoviesCount, (state) => {
     state.displayedMoviesCount = 8;
-  })
-  .addCase(setReviews, (state, action) => {
-    state.reviews = action.payload;
   })
 })
 

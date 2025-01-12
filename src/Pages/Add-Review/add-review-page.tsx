@@ -1,8 +1,9 @@
 import { Link, useParams } from 'react-router-dom';
 import { ChangeEvent, FormEvent, useState } from 'react';
+import { useAppSelector } from '../../hooks/hooks';
+import Sketch from '../../components/sketch/sketch';
 import { AppRoute } from '../../const';
-import Sketch from '../../Components/Sketch/sketch';
-import { useAppSelector } from '../../Hooks/hooks';
+
 
 function AddReviewPage(): JSX.Element {
 

@@ -1,5 +1,6 @@
-import Sketch from "../../Components/Sketch/sketch";
-import { useAppSelector } from "../../Hooks/hooks";
+import Sketch from "../../components/sketch/sketch";
+import { useAppSelector } from "../../hooks/hooks";
+
 
 function PlayerPage() {
   const movies = useAppSelector((state) => state.movies);

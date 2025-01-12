@@ -1,11 +1,11 @@
 import { Link, useParams } from "react-router-dom";
-import Header from "../../Components/Header/header";
-import Sketch from "../../Components/Sketch/sketch";
+import { useAppSelector } from "../../hooks/hooks";
+import Sketch from "../../components/sketch/sketch";
+import Header from "../../components/header/header";
 import { AppRoute } from "../../const";
-import Tabs from "../../Components/Tabs/tabs-film";
-import Footer from "../../Components/Footer/footer";
-import { useAppSelector } from "../../Hooks/hooks";
-import FilmsList from "../../Components/Films-List/films-list";
+import Tabs from "../../components/tabs/tabs-film";
+import FilmsList from "../../components/films-List/films-list";
+import Footer from "../../components/footer/footer";
 
 function FilmPage() {
 

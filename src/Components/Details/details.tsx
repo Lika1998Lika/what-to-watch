@@ -1,4 +1,4 @@
-import { useAppSelector } from "../../Hooks/hooks";
+import { useAppSelector } from "../../hooks/hooks";
 
 function Details() {
   const movies = useAppSelector((state) => state.movies);
