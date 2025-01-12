@@ -3,9 +3,13 @@ import Sketch from "../../components/sketch/sketch";
 import { AppRoute } from "../../const";
 import FilmsList from "../../components/films-List/films-list";
 import Footer from "../../components/footer/footer";
+import { useAppDispatch } from "../../hooks/hooks";
+import { logoutAction } from "../../store/api-actions";
 
 
 function MyListPage() {
+  const dispatch = useAppDispatch();
+
   return (
     <>
       <Sketch />
@@ -30,7 +34,13 @@ function MyListPage() {
               </div>
             </li>
             <li className="user-block__item">
-              <Link className="user-block__link" to={AppRoute.Main}>Sign out</Link>
+              <Link to={AppRoute.Main} className="user-block__link"
+                onClick={(evt) => {
+                  evt.preventDefault();
+                  dispatch(logoutAction());
+                }}>
+                Sign Out
+              </Link>
             </li>
           </ul>
         </header>

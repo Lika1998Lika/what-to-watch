@@ -1,12 +1,11 @@
 import { FormEvent, useRef } from "react";
-// import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../hooks/hooks";
 import { AuthData } from "../../types/auth-data";
 import { loginAction } from "../../store/api-actions";
 import Sketch from "../../components/sketch/sketch";
-import Header from "../../components/header/header";
-// import { AppRoute } from "../../const";
 import Footer from "../../components/footer/footer";
+import { AppRoute } from "../../const";
+import { Link, useNavigate } from "react-router-dom";
 
 
 function SignInPage() {
@@ -15,7 +14,7 @@ function SignInPage() {
   const passwordRef = useRef<HTMLInputElement | null>(null);
 
   const dispatch = useAppDispatch();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const onSubmit = (authData: AuthData) => {
     dispatch(loginAction(authData));
@@ -37,12 +36,23 @@ function SignInPage() {
       <Sketch />
 
       <div className="user-page">
-        <Header />
+
+        <header className="page-header user-page__head">
+          <div className="logo">
+            <Link to={AppRoute.Main} className="logo__link">
+              <span className="logo__letter logo__letter--1">W</span>
+              <span className="logo__letter logo__letter--2">T</span>
+              <span className="logo__letter logo__letter--3">W</span>
+            </Link>
+          </div>
+
+          <h1 className="page-title user-page__title">Sign in</h1>
+        </header>
+
         <div className="sign-in user-page__content">
           <form action="#" className="sign-in__form" onSubmit={handleSubmit}>
             <div className="sign-in__fields">
               <div className="sign-in__field">
-                {/* //autoComplete="username" autoComplete="current-password" */}
                 <input className="sign-in__input"
                   ref={emailRef}
                   type="email"
@@ -65,7 +75,7 @@ function SignInPage() {
             </div>
             <div className="sign-in__submit">
               <button
-                // onSubmit={() => navigate(AppRoute.Main)}
+                onSubmit={() => navigate(AppRoute.Main)}
                 className="sign-in__btn"
                 type="submit">
                 Sign in
