@@ -16,7 +16,8 @@ export enum AuthorizationStatus {
 export enum APIRoute {
   Login = '/login',
   Logout = '/logout',
-  Movies = '/films'
+  Movies = '/films',
+  Comments = '/comments',
 };
 
 export const TIMEOUT_SHOW_ERROR = 2000;

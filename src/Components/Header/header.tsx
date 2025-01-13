@@ -10,7 +10,6 @@ function Header() {
   const dispatch = useAppDispatch();
 
   const authStatus = authorizationStatus === AuthorizationStatus.Auth ? 'Sign out' : 'Sign in';
-  console.log(authStatus)
 
   return (
     <header className="page-header film-card__head">
