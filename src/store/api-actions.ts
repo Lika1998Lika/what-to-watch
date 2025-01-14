@@ -8,6 +8,7 @@ import { AuthData } from "../types/auth-data";
 import { UserData } from "../types/user-data";
 import { dropToken, saveToken } from "../components/services/token";
 import { ReviewType } from "../types/reviews-type";
+import { CreateCommentDto } from "../types/comment-dto-type";
 
 
 export const fetchMoviesActions = createAsyncThunk<void, undefined, {dispatch: AppDispatch, state: State, extra: AxiosInstance}>(
@@ -21,11 +22,20 @@ export const fetchMoviesActions = createAsyncThunk<void, undefined, {dispatch: A
 );
 
 export const fetchReviewsActions = createAsyncThunk<void, number, {dispatch: AppDispatch, state: State, extra: AxiosInstance}>(
-  'data/fetchReviews',
+  'comments/fetchReviews',
   async (filmId, {dispatch, extra: api}) => {
     const {data} = await api.get<ReviewType[]>(`${APIRoute.Comments}/${filmId}`);
-    console.log('API response:', filmId, data);
     dispatch(loadReviews(data));
+  },
+);
+
+export const addNewComments = createAsyncThunk<void, CreateCommentDto, {dispatch: AppDispatch, state: State, extra: AxiosInstance}>(
+  'comments/addNewComments',
+  async (dto, {dispatch, extra: api}) => {
+    const {filmId, comment, rating} = dto;
+    const { data } = await api.post<ReviewType[]>(`${APIRoute.Comments}/${filmId}`, {comment, rating});
+    dispatch(loadReviews(data));
+    dispatch(requireAuthorization(AuthorizationStatus.Auth));
   },
 );
 

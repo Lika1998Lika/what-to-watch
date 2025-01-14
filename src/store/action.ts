@@ -6,6 +6,7 @@ import { ReviewType } from "../types/reviews-type";
 export const loadMovies = createAction<MovieType[]>('data/LOAD_MOVIES');
 export const loadReviews = createAction<ReviewType[]>('reviews/LOAD_REVIEWS');
 
+
 export const requireAuthorization = createAction<AuthorizationStatus>('user/REQUIRE_AUTHORIZATION');
 export const setDataLoadedStatus = createAction<boolean>('data/SET_DATA_LOADED_STATUS');
 export const redirectToRoute = createAction<AppRoute>('movies/REDIRECT_TO_ROUTE');

@@ -1,63 +1,36 @@
 import { Link, useParams } from 'react-router-dom';
-import { ChangeEvent, FormEvent, useState } from 'react';
-import { useAppSelector } from '../../hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import Sketch from '../../components/sketch/sketch';
 import { AppRoute } from '../../const';
+import { addNewComments, logoutAction } from '../../store/api-actions';
+import React, { FormEvent, useRef } from 'react';
+import { redirectToRoute } from '../../store/action';
 
 
 function AddReviewPage(): JSX.Element {
 
   const { filmId } = useParams();
+  const dispatch = useAppDispatch();
 
   const movies = useAppSelector((state) => state.movies);
   const movie = movies.find((item) => item.id === Number(filmId));
-  if (!movie) {
-    return <h1>ошибка</h1>
+
+  const formRef = useRef<HTMLFormElement | null>(null);
+
+  const onSubmit = (evt: FormEvent<HTMLFormElement>) => {
+    evt.preventDefault();
+    if (!formRef.current) {
+      return
+    }
+    const formData = new FormData(formRef.current);
+    const rating = Number(formData.get('rating'));
+    const comment = formData.get('review-text') as string;
+    dispatch(addNewComments({ filmId: Number(filmId), comment, rating }));
+    dispatch(redirectToRoute(`${AppRoute.Film}/${filmId}` as AppRoute))
   }
 
-  const [rating, setRating] = useState<number>(0);
-  const [reviewText, setReviewText] = useState<string>('');
-  const [isFormDisabled, setIsFormDisabled] = useState<boolean>(false);
-  const [isSubmitDisabled, setIsSubmitDisabled] = useState<boolean>(true);
-
-  const handleRatingChange = (value: number) => {
-    setRating(value);
-    validateForm(value, reviewText);
-  };
-
-  const handleReviewTextChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    const text = event.target.value;
-    console.log(text);
-    setReviewText(text);
-    validateForm(rating, text);
-  };
-
-  const validateForm = (ratings: number, texts: string) => {
-    if (ratings > 0 && texts.length >= 50 && texts.length <= 400) {
-      setIsSubmitDisabled(false);
-    } else {
-      setIsSubmitDisabled(true);
-    }
-  };
-
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>): Promise<void> => {
-    event.preventDefault();
-    setIsFormDisabled(true);
-
-    const formData = {
-      rating,
-      reviewText,
-    };
-    try {
-      console.log('Отправленные данные:', formData);
-      setIsFormDisabled(false);
-      setRating(0);
-      setReviewText('');
-      setIsSubmitDisabled(true);
-    } catch (error) {
-      console.error('Ошибка при отправке данных:', error);
-      setIsFormDisabled(false);
-    }
+  if (!movie) {
+    return <h1>ошибка</h1>
   };
 
   return (
@@ -87,19 +60,25 @@ function AddReviewPage(): JSX.Element {
                   <Link to={`${AppRoute.Film}/${filmId}`} className="breadcrumbs__link">{movie.name}</Link>
                 </li>
                 <li className="breadcrumbs__item">
-                  <Link className="breadcrumbs__link" to={AppRoute.AddReview}>Add review</Link>
+                  <a className="breadcrumbs__link">Add review</a>
                 </li>
               </ul>
             </nav>
 
             <ul className="user-block">
               <li className="user-block__item">
-                <Link to={AppRoute.MyList}>
-                  <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-                </Link>
+                <div className="user-block__avatar">
+                  <Link to={AppRoute.MyList}>
+                    <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+                  </Link>
+                </div>
               </li>
               <li className="user-block__item">
-                <Link className="user-block__link" to={AppRoute.Main}>Sign out</Link>
+                <Link className="user-block__link" to={AppRoute.Main}
+                  onClick={(evt) => {
+                    evt.preventDefault();
+                    dispatch(logoutAction());
+                  }}>Sign out</Link>
               </li>
             </ul>
           </header>
@@ -110,25 +89,16 @@ function AddReviewPage(): JSX.Element {
         </div>
 
         <div className="add-review">
-          <form action="#" className="add-review__form" onSubmit={handleSubmit}>
+          <form action="#" className="add-review__form" ref={formRef} onSubmit={onSubmit}>
             <div className="rating">
               <div className="rating__stars">
 
                 {
                   [...Array(10)].map((_: number, index) => (
-                    <span key={index}>
-                      <input
-                        className="rating__input"
-                        id={`star-${index + 1}`}
-                        type="radio"
-                        name="rating"
-                        value={index + 1}
-                        checked={rating === index + 1}
-                        disabled={isFormDisabled}
-                        onChange={() => handleRatingChange(index + 1)}
-                      />
-                      <label className="rating__label" htmlFor={`star-${index + 1}`}> Rating {index + 1}</label>
-                    </span>
+                    <React.Fragment key={index}>
+                      <input className="rating__input" id={`star-${index + 1}`} type="radio" name="rating" value={index + 1} />
+                      <label className="rating__label" htmlFor={`star-${index + 1}`}>{index + 1}</label>
+                    </React.Fragment>
                   )).reverse()
                 }
 
@@ -137,16 +107,17 @@ function AddReviewPage(): JSX.Element {
 
             <div className="add-review__text">
               <textarea
-                value={reviewText}
-                onChange={handleReviewTextChange}
                 className="add-review__textarea"
                 name="review-text"
                 id="review-text"
                 placeholder="Review text"
-                disabled={isFormDisabled}
+                minLength={50}
+                maxLength={400}
+                required
               />
               <div className="add-review__submit">
-                <button className="add-review__btn" type="submit" disabled={isSubmitDisabled || isFormDisabled}>Post</button>
+                <button className="add-review__btn" type="submit"
+                >Post</button>
               </div>
 
             </div>

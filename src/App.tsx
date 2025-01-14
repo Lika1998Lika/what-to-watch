@@ -49,7 +49,7 @@ function App() {
           <Route path="reviews" element={<Reviews />} />
         </Route>
 
-        <Route path={AppRoute.Player} element={<PlayerPage />} />
+        <Route path={`${AppRoute.Player}/:filmId`} element={<PlayerPage />} />
         <Route path='*' element={<NotFoundScreen />} />
       </Routes>
     </HistoryRouter>

@@ -14,12 +14,6 @@ function Reviews() {
   }, [filmId, dispatch]);
 
   const reviews = useAppSelector((state) => state.reviews);
-  // const currentReviews = reviews.filter((item) => item.filmId === Number(filmId));
-
-  console.log('All reviews:', reviews);
-
-  // const midIndex = Math.ceil(reviews.length / 2);
-  // const firstColumnReviews = reviews.slice(0, midIndex);
 
   const formatDate = (isoString: string): string => {
     const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };

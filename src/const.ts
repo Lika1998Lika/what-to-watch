@@ -2,8 +2,8 @@ export enum AppRoute {
   Main = '/',
   SignIn = '/login',
   MyList = '/my-list',
-  Film = '/film',
-  AddReview = '/add-review',
+  Film = '/films',
+  AddReview = '/reviews',
   Player = '/player',
 };
 
