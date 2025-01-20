@@ -6,7 +6,7 @@ import { APIRoute, AppRoute, AuthorizationStatus } from "../const";
 import { loadMovies, loadReviews, redirectToRoute, requireAuthorization, setDataLoadedStatus } from "./action";
 import { AuthData } from "../types/auth-data";
 import { UserData } from "../types/user-data";
-import { dropToken, saveToken } from "../components/services/token";
+import { dropToken, saveToken } from "../services/token";
 import { ReviewType } from "../types/reviews-type";
 import { CreateCommentDto } from "../types/comment-dto-type";
 

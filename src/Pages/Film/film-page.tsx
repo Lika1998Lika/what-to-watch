@@ -39,10 +39,14 @@ function FilmPage() {
 
               <div className="film-card__buttons">
                 <button className="btn btn--play film-card__button" type="button">
-                  <svg viewBox="0 0 19 19" width="19" height="19">
-                    <use xlinkHref="#play-s"></use>
-                  </svg>
-                  <span>Play</span>
+                  <Link to={`${AppRoute.Player}/${filmId}`} style={{ textDecoration: 'none', color: '#D9CD8D' }}>
+                    <svg viewBox="0 0 19 19" width="19" height="19">
+                      <use xlinkHref="#play-s"></use>
+                    </svg>
+                    <span>
+                      Play
+                    </span>
+                  </Link>
                 </button>
                 <button className="btn btn--list film-card__button" type="button">
                   <svg viewBox="0 0 19 20" width="19" height="20">
