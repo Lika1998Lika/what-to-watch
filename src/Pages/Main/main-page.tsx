@@ -5,11 +5,11 @@ import Footer from "../../components/footer/footer";
 import ShowMore from "../../components/show-more/show-more";
 import Sketch from "../../components/sketch/sketch";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
-import { setIncreaseMoviesCount } from "../../store/action";
+import { setIncreaseMoviesCount } from "../../store/movies-process/movies-process";
 
 function MainPage() {
-  const movies = useAppSelector((state) => state.movies);
-  const displayedMoviesCount = useAppSelector((state) => state.displayedMoviesCount);
+  const movies = useAppSelector((state) => state.MOVIES_DATA.movies);
+  const displayedMoviesCount = useAppSelector((state) => state.MOVIES.displayedMoviesCount);
   const dispatch = useAppDispatch();
 
   const handleShowMore = () => {

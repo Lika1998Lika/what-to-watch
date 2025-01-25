@@ -7,6 +7,13 @@ export enum AppRoute {
   Player = '/player',
 };
 
+export enum NameSpace {
+  User = 'USER',
+  MoviesData = 'MOVIES_DATA',
+  Movie = 'MOVIES',
+  ReviewsData = 'REVIEWS_DATA',
+};
+
 export enum AuthorizationStatus {
   Auth = 'AUTH',
   NoAuth = 'NO_AUTH',

@@ -12,7 +12,7 @@ function AddReviewPage(): JSX.Element {
   const { filmId } = useParams();
   const dispatch = useAppDispatch();
 
-  const movies = useAppSelector((state) => state.movies);
+  const movies = useAppSelector((state) => state.MOVIES_DATA.movies);
   const movie = movies.find((item) => item.id === Number(filmId));
 
   const formRef = useRef<HTMLFormElement | null>(null);

@@ -10,14 +10,8 @@ import { AppRoute } from "../../const";
 
 function FilmCard() {
   const { filmId } = useParams();
-  const movies = useAppSelector((state) => state.movies)
+  const movies = useAppSelector((state) => state.MOVIES_DATA.movies)
   const film = movies.find((item) => item);
-
-  // const [isCheked, setIsCheked] = useState(false);
-
-  // const handleCheked = () => {
-
-  // }
 
   if (!film) {
     return;

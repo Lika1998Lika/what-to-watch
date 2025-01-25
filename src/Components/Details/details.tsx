@@ -1,7 +1,7 @@
 import { useAppSelector } from "../../hooks/hooks";
 
 function Details() {
-  const movies = useAppSelector((state) => state.movies);
+  const movies = useAppSelector((state) => state.MOVIES_DATA.movies);
   const film = movies.find((movie) => movie)
 
   return (

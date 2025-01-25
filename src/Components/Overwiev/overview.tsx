@@ -6,7 +6,7 @@ import { getRatingDescription } from "./get-rating-description";
 function Overview() {
 
   const { filmId } = useParams()
-  const movies = useAppSelector((state) => state.movies);
+  const movies = useAppSelector((state) => state.MOVIES_DATA.movies);
 
   const film = movies.find((movie) => movie.id === Number(filmId));
   const filmRating = film?.rating.toString();

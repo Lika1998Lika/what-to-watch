@@ -20,8 +20,8 @@ import LoadingScreen from "./pages/loading-screen/loading-screen";
 
 function App() {
 
-  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
-  const isDataLoaded = useAppSelector((state) => state.isDataLoaded);
+  const authorizationStatus = useAppSelector((state) => state.USER.authorizationStatus);
+  const isDataLoaded = useAppSelector((state) => state.MOVIES_DATA.isDataLoaded);
 
   if (isCheckedAuth(authorizationStatus || isDataLoaded)) {
     return <LoadingScreen />;

@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { MovieType } from "../../types/film-type";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
-import { resetDisplayedMoviesCount } from "../../store/action";
+import { resetDisplayedMoviesCount } from "../../store/movies-process/movies-process";
 import { AppRoute } from "../../const";
 import VideoPlayer from "../video-player/video-player";
 
@@ -15,8 +15,8 @@ const FilmsList: React.FC<FilmsListProps> = ({ limit }) => {
   const [isHovered, setIsHovered] = useState(false);
 
 
-  const movies = useAppSelector((state) => state.movies);
-  const displayedMoviesCount = useAppSelector((state) => state.displayedMoviesCount);
+  const movies = useAppSelector((state) => state.MOVIES_DATA.movies);
+  const displayedMoviesCount = useAppSelector((state) => state.MOVIES.displayedMoviesCount);
 
   const timerRef = useRef<number | undefined>(undefined);
   const dispatch = useAppDispatch();
@@ -41,7 +41,7 @@ const FilmsList: React.FC<FilmsListProps> = ({ limit }) => {
   const displayedMovies = limit ? movies.slice(0, limit) : movies.slice(0, displayedMoviesCount);
 
   useEffect(() => {
-    dispatch(resetDisplayedMoviesCount(8));
+    dispatch(resetDisplayedMoviesCount());
   }, [location.pathname, dispatch]);
 
   return (

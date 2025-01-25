@@ -10,7 +10,7 @@ function PlayerPage() {
   const { filmId } = useParams();
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const movies = useAppSelector((state) => state.movies);
+  const movies = useAppSelector((state) => state.MOVIES_DATA.movies);
   const film = movies.find((movie) => movie);
 
   const [isPlaying, setIsPlaying] = useState(false);

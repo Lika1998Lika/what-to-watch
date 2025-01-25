@@ -10,7 +10,7 @@ import Footer from "../../components/footer/footer";
 function FilmPage() {
 
   const { filmId } = useParams();
-  const movies = useAppSelector((state) => state.movies);
+  const movies = useAppSelector((state) => state.MOVIES_DATA.movies);
   //FIX
   const film = movies.find((item: any) => String(item.id) === filmId);
 

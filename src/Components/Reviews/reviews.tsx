@@ -13,7 +13,7 @@ function Reviews() {
     }
   }, [filmId, dispatch]);
 
-  const reviews = useAppSelector((state) => state.reviews);
+  const reviews = useAppSelector((state) => state.REVIEWS_DATA.reviews);
 
   const formatDate = (isoString: string): string => {
     const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };

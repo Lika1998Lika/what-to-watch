@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { genreMap, genriesListFilms } from "../../const";
-import { changeGenreAction } from "../../store/action";
+import { changeGenreAction } from "../../store/movies-process/movies-process";
 
 
 function CatalogGenres() {
 
   const activeClass = 'catalog__genres-item--active';
   const dispatch = useAppDispatch();
-  const genre = useAppSelector((state) => state.genre);
+  const genre = useAppSelector((state) => state.MOVIES.genre);
 
   return (
     <ul className="catalog__genres-list">

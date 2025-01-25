@@ -1,6 +1,6 @@
 import { Middleware } from "redux";
-import { reducer } from "../reducer";
 import browserHistory from "../../browser-history";
+import { rootReducer } from "../root-reducer";
 
 interface ReduxAction {
   type: string;
@@ -18,7 +18,7 @@ function isRedirectToRouteAction(action: unknown): action is RedirectToRouteActi
   );
 }
 
-type Reducer = ReturnType<typeof reducer>;
+type Reducer = ReturnType<typeof rootReducer>;
 
 export const redirect: Middleware<unknown, Reducer> =
   (_store) =>

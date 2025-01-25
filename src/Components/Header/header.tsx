@@ -6,7 +6,7 @@ import { logoutAction } from "../../store/api-actions";
 
 function Header() {
 
-  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+  const authorizationStatus = useAppSelector((state) => state.USER.authorizationStatus);
   const dispatch = useAppDispatch();
 
   const authStatus = authorizationStatus === AuthorizationStatus.Auth ? 'Sign out' : 'Sign in';
